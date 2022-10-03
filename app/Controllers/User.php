@@ -13,10 +13,13 @@ class User extends BaseController
     public function auth(){
         $email=$this->request->getPost('email');
         $password=$this->request->getPost('password');
-        return view('/user/auth', null);
+        $this->modelUser->Where('email', $email);
+        $this->modelUser->Where('password', $password);
+        $this->modelUser->find();
+        
     }
     public function logout(){
-        return view('/user/logout', null);
+        
     }
 
 }
